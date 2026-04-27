@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>portfolio | contact</title>
+  <meta name="description" content="a minimalist interactive portfolio showcasing design work, projects, and contact information.">
+
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#f4f1ec">
+</head>
+
+  <nav class="edge-nav" aria-label="main navigation">
+    <a class="nav-home" href="index.html">home</a>
+    <a class="nav-projects" href="projects.html">projects</a>
+    <a class="nav-about" href="about.html">about</a>
+    <a class="nav-contact active" href="contact.html">contact</a>
+  </nav>
+
+  <main class="content-layout page-fade">
+    <section class="contact-layout">
+      <div>
+        <p class="eyebrow">contact</p>
+        <h1>let’s connect.</h1>
+        <p>
+          <!-- replace with your real email or contact line -->
+          use this space for a simple contact note, availability line, or professional email.
+        </p>
+      </div>
+
+      <!-- this form is front-end only unless you connect it to a form service later -->
+      <form class="contact-form" id="contact-form">
+        <label for="name">name</label>
+        <input id="name" name="name" type="text" placeholder="your name" required />
+
+        <label for="email">email</label>
+        <input id="email" name="email" type="email" placeholder="your email" required />
+
+        <label for="message">message</label>
+        <textarea id="message" name="message" rows="6" placeholder="write your message" required></textarea>
+
+        <button type="submit">send message</button>
+
+        <p class="form-note" id="form-note" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>portfolio | projects</title>
+  <meta name="description" content="a minimalist interactive portfolio showcasing design work, projects, and contact information.">
+
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#f4f1ec">
+</head>
+<body>
+  <header class="site-logo">
+    <!-- replace this with your actual logo image -->
+    <a href="index.html" aria-label="go to home">your logo</a>
+  </header>
+
+  <nav class="edge-nav" aria-label="main navigation">
+    <a class="nav-home" href="index.html">home</a>
+    <a class="nav-projects active" href="projects.html">projects</a>
+    <a class="nav-about" href="about.html">about</a>
+    <a class="nav-contact" href="contact.html">contact</a>
+  </nav>
+
+  <main class="content-layout page-fade">
+    <section class="section-header">
+      <p class="eyebrow">selected work</p>
+      <h1>projects</h1>
+      <p>
+        a focused collection of finished work. each project opens with a quiet reveal: title, image, then explanation.
+      </p>
+    </section>
+
+    <section class="project-grid" aria-label="project gallery">
+      <!-- duplicate/edit these project cards as needed -->
+
+      <button class="project-card"
+        data-title="project title one"
+        data-image="img/project-01.jpg"
+        data-alt="brief description of project image one"
+        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
+        <span>project title one</span>
+      </button>
+
+      <button class="project-card"
+        data-title="project title two"
+        data-image="img/project-02.jpg"
+        data-alt="brief description of project image two"
+        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
+        <span>project title two</span>
+      </button>
+
+      <button class="project-card"
+        data-title="project title three"
+        data-image="img/project-03.jpg"
+        data-alt="brief description of project image three"
+        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
+        <span>project title three</span>
+      </button>
+
+      <button class="project-card"
+        data-title="project title four"
+        data-image="img/project-04.jpg"
+        data-alt="brief description of project image four"
+        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
+        <span>project title four</span>
+      </button>
+    </section>
+  </main>
+
+  <!-- modal for staged project reveal -->
+  <div class="modal" id="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="close project window">close</button>
+
+      <h2 id="modal-title" class="modal-title reveal-step"></h2>
+
+      <div class="modal-image-wrap reveal-step">
+        <img id="modal-image" src="" alt="" />
+      </div>
+
+      <p id="modal-description" class="modal-description reveal-step"></p>
+    </section>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

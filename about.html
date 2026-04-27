@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>portfolio | home</title>
+  <title>portfolio | about</title>
   <meta name="description" content="a minimalist interactive portfolio showcasing design work, projects, and contact information.">
 
   <link rel="icon" href="icon.png">
@@ -12,31 +12,34 @@
 
   <meta name="theme-color" content="#f4f1ec">
 </head>
-
 <body>
-  <!-- fixed logo/header element -->
   <header class="site-logo">
     <!-- replace this with your actual logo image -->
-    <!-- example: <img src="img/logo.png" alt="cole chen logo"> -->
     <a href="index.html" aria-label="go to home">your logo</a>
   </header>
 
-  <!-- fixed four-direction navigation -->
   <nav class="edge-nav" aria-label="main navigation">
-    <a class="nav-home active" href="index.html">home</a>
+    <a class="nav-home" href="index.html">home</a>
     <a class="nav-projects" href="projects.html">projects</a>
-    <a class="nav-about" href="about.html">about</a>
+    <a class="nav-about active" href="about.html">about</a>
     <a class="nav-contact" href="contact.html">contact</a>
   </nav>
 
-  <main class="home-layout page-fade">
-    <section class="home-statement" aria-labelledby="home-title">
-      <p class="eyebrow">portfolio / interactive digital showcase</p>
-      <h1 id="home-title">clarity is rarely loud, but it is always decisive.</h1>
-      <p class="intro-copy">
-        <!-- replace this with your own short intro -->
-        a quiet portfolio built around intentional interaction, restrained motion, and visual clarity.
-      </p>
+  <main class="content-layout page-fade">
+    <section class="about-layout">
+      <div class="about-image">
+        <!-- replace with your own portrait/headshot -->
+        <img src="img/about-photo.jpg" alt="portrait of your name" />
+      </div>
+
+      <div class="about-text">
+        <p class="eyebrow">about</p>
+        <h1>your name</h1>
+        <p>
+          <!-- replace this with your actual about paragraph -->
+          write a concise paragraph about who you are, what kind of design you make, and what guides your work. keep it lowercase, specific, and natural.
+        </p>
+      </div>
     </section>
   </main>
 

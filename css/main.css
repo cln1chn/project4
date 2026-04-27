@@ -1,1 +1,487 @@
-/* Place CSS styles here */
+/* 
+  quiet interaction portfolio
+  replace text/images freely, but keep the structure if you want the interaction to work.
+*/
+
+:root {
+  --bg: #f4f1ec;
+  --surface: #ebe6df;
+  --text: #24211f;
+  --muted: #8a8178;
+  --accent: #ff4f21;
+  --line: rgba(36, 33, 31, 0.16);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+
+  --transition: 220ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "courier new", courier, monospace;
+  background: var(--bg);
+  color: var(--text);
+  text-transform: lowercase;
+  line-height: 1.5;
+}
+
+/* keeps images from overflowing */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* fixed logo/header */
+.site-logo {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  z-index: 50;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.site-logo img {
+  width: 92px;
+  height: auto;
+}
+
+.site-logo a {
+  display: inline-block;
+  padding: 0.35rem 0.55rem;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.site-logo a:hover {
+  opacity: 0.72;
+  transform: translateY(-1px);
+}
+
+/* four-direction navigation */
+.edge-nav a {
+  position: fixed;
+  z-index: 45;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.edge-nav a:hover,
+.edge-nav a:focus-visible,
+.edge-nav a.active {
+  opacity: 0.55;
+}
+
+.nav-home {
+  top: 4.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-projects {
+  top: 50%;
+  left: 1.25rem;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+}
+
+.nav-about {
+  top: 50%;
+  right: 1.25rem;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+}
+
+.nav-contact {
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* shared page layout */
+.page-fade {
+  animation: pageFade 520ms ease both;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-layout,
+.content-layout {
+  min-height: 100vh;
+  padding: var(--space-xl) clamp(1.5rem, 6vw, 6rem);
+}
+
+.home-layout {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.home-statement {
+  max-width: 760px;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-sm);
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: var(--space-md);
+  font-size: clamp(2.25rem, 7vw, 6rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  color: var(--accent);
+}
+
+.intro-copy,
+.section-header p,
+.about-text p,
+.contact-layout p,
+.modal-description {
+  color: var(--text);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+}
+
+.content-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-header {
+  max-width: 620px;
+  margin-bottom: var(--space-lg);
+}
+
+.section-header h1 {
+  margin-bottom: var(--space-sm);
+}
+
+/* project grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.project-card {
+  min-height: 260px;
+  padding: var(--space-md);
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.project-card span {
+  display: block;
+  max-width: 14ch;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  background: var(--surface);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 33, 31, 0.42);
+}
+
+.modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(880px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: clamp(1rem, 4vw, 3rem);
+  box-shadow: 0 24px 80px rgba(36, 33, 31, 0.24);
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: block;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  padding: 0 0 var(--space-sm);
+}
+
+.modal-title {
+  margin-bottom: var(--space-md);
+  color: var(--accent);
+  font-size: clamp(2rem, 6vw, 4.75rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+}
+
+.modal-image-wrap {
+  margin-bottom: var(--space-md);
+  background: var(--surface);
+}
+
+.modal-image-wrap img {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+}
+
+.modal-description {
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+/* staged reveal classes */
+.reveal-step {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.reveal-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* about page */
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 420px) minmax(280px, 620px);
+  gap: var(--space-lg);
+  align-items: center;
+  margin-inline: auto;
+  width: min(1000px, 100%);
+}
+
+.about-image {
+  background: var(--surface);
+}
+
+.about-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.about-text h1 {
+  margin-bottom: var(--space-sm);
+}
+
+/* contact page */
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) minmax(280px, 520px);
+  gap: var(--space-lg);
+  align-items: start;
+  margin-inline: auto;
+  width: min(980px, 100%);
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-form label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  padding: 0.9rem;
+  outline: none;
+  text-transform: lowercase;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact-form button {
+  margin-top: var(--space-sm);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  font: inherit;
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  text-transform: lowercase;
+}
+
+.contact-form button:hover,
+.contact-form button:focus-visible {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.form-note {
+  min-height: 1.5rem;
+  color: var(--accent);
+}
+
+/* responsive adjustments */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-layout,
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-logo {
+    position: static;
+    transform: none;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .edge-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(244, 241, 236, 0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .edge-nav a,
+  .nav-home,
+  .nav-projects,
+  .nav-about,
+  .nav-contact {
+    position: static;
+    transform: none;
+    font-size: 0.68rem;
+  }
+
+  .home-layout,
+  .content-layout {
+    min-height: auto;
+    padding: 4rem 1.25rem;
+  }
+
+  .home-layout {
+    min-height: 70vh;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: 180px;
+  }
+
+  .modal {
+    padding: 0.75rem;
+  }
+
+  .modal-panel {
+    max-height: 92vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
