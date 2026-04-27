@@ -1,76 +1,60 @@
-// quiet interaction portfolio javascript
-
+const projectCards = document.querySelectorAll(".project-card");
 const modal = document.querySelector("#project-modal");
 const modalTitle = document.querySelector("#modal-title");
 const modalImage = document.querySelector("#modal-image");
 const modalDescription = document.querySelector("#modal-description");
+const closeButton = document.querySelector(".modal-close");
+const modalBg = document.querySelector(".modal-bg");
 const revealSteps = document.querySelectorAll(".reveal-step");
-const projectCards = document.querySelectorAll(".project-card");
-const closeButtons = document.querySelectorAll("[data-close-modal]");
-const contactForm = document.querySelector("#contact-form");
-const formNote = document.querySelector("#form-note");
 
-// opens the project modal and reveals title, image, and paragraph in order
-function openProjectModal(card) {
-  if (!modal) return;
+projectCards.forEach(function(card) {
+  card.addEventListener("click", function() {
+    modalTitle.textContent = card.dataset.title;
+    modalImage.src = card.dataset.image;
+    modalImage.alt = card.dataset.title;
+    modalDescription.textContent = card.dataset.description;
 
-  modalTitle.textContent = card.dataset.title || "project title";
-  modalImage.src = card.dataset.image || "";
-  modalImage.alt = card.dataset.alt || "project image";
-  modalDescription.textContent = card.dataset.description || "project description goes here.";
+    modal.classList.add("open");
 
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+    revealSteps.forEach(function(step) {
+      step.classList.remove("visible");
+    });
 
-  // reset previous reveal state
-  revealSteps.forEach((step) => {
-    step.classList.remove("is-visible");
+    revealSteps.forEach(function(step, index) {
+      setTimeout(function() {
+        step.classList.add("visible");
+      }, index * 200);
+    });
   });
-
-  // staged reveal: title first, image second, text third
-  revealSteps.forEach((step, index) => {
-    setTimeout(() => {
-      step.classList.add("is-visible");
-    }, index * 180);
-  });
-
-  const closeButton = modal.querySelector(".modal-close");
-  if (closeButton) closeButton.focus();
-}
-
-function closeProjectModal() {
-  if (!modal) return;
-
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-
-  revealSteps.forEach((step) => {
-    step.classList.remove("is-visible");
-  });
-}
-
-projectCards.forEach((card) => {
-  card.addEventListener("click", () => openProjectModal(card));
 });
 
-closeButtons.forEach((button) => {
-  button.addEventListener("click", closeProjectModal);
-});
+function closeModal() {
+  if (modal) {
+    modal.classList.remove("open");
+  }
+}
 
-document.addEventListener("keydown", (event) => {
+if (closeButton) {
+  closeButton.addEventListener("click", closeModal);
+}
+
+if (modalBg) {
+  modalBg.addEventListener("click", closeModal);
+}
+
+document.addEventListener("keydown", function(event) {
   if (event.key === "Escape") {
-    closeProjectModal();
+    closeModal();
   }
 });
 
-// simple front-end form feedback
-// this does not actually send an email unless you connect it to a service later
-if (contactForm && formNote) {
-  contactForm.addEventListener("submit", (event) => {
+const contactForm = document.querySelector(".contact-form");
+const formMessage = document.querySelector("#form-message");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    formNote.textContent = "message ready. connect this form to a service before final submission.";
+    formMessage.textContent = "message ready. connect this form before final submission.";
     contactForm.reset();
   });
 }

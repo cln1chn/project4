@@ -12,82 +12,105 @@
 
   <meta name="theme-color" content="#f4f1ec">
 </head>
+
 <body>
   <header class="site-logo">
-    <!-- replace this with your actual logo image -->
-    <a href="index.html" aria-label="go to home">your logo</a>
+    <a href="index.html">
+      <img src="img/logo.png" alt="personal logo">
+    </a>
   </header>
 
-  <nav class="edge-nav" aria-label="main navigation">
+  <nav class="edge-nav">
     <a class="nav-home" href="index.html">home</a>
     <a class="nav-projects active" href="projects.html">projects</a>
     <a class="nav-about" href="about.html">about</a>
     <a class="nav-contact" href="contact.html">contact</a>
   </nav>
 
-  <main class="content-layout page-fade">
-    <section class="section-header">
+  <main class="content-layout">
+    <section class="page-intro">
       <p class="eyebrow">selected work</p>
       <h1>projects</h1>
-      <p>
-        a focused collection of finished work. each project opens with a quiet reveal: title, image, then explanation.
-      </p>
+      <p>click a project to view the finished work and a short explanation.</p>
     </section>
 
-    <section class="project-grid" aria-label="project gallery">
-      <!-- duplicate/edit these project cards as needed -->
+    <section class="project-grid">
 
-      <button class="project-card"
-        data-title="project title one"
-        data-image="img/project-01.jpg"
-        data-alt="brief description of project image one"
-        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
-        <span>project title one</span>
+      <button class="project-card" data-title="graphic design 01" data-image="img/gd1.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 01</span>
       </button>
 
-      <button class="project-card"
-        data-title="project title two"
-        data-image="img/project-02.jpg"
-        data-alt="brief description of project image two"
-        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
-        <span>project title two</span>
+      <button class="project-card" data-title="graphic design 02" data-image="img/gd2.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 02</span>
       </button>
 
-      <button class="project-card"
-        data-title="project title three"
-        data-image="img/project-03.jpg"
-        data-alt="brief description of project image three"
-        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
-        <span>project title three</span>
+      <button class="project-card" data-title="graphic design 03" data-image="img/gd3.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 03</span>
       </button>
 
-      <button class="project-card"
-        data-title="project title four"
-        data-image="img/project-04.jpg"
-        data-alt="brief description of project image four"
-        data-description="replace this text with one clear paragraph explaining the project, what it was for, and what design decisions matter most. keep it direct, specific, and lowercase.">
-        <span>project title four</span>
+      <button class="project-card" data-title="graphic design 04" data-image="img/gd4.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 04</span>
       </button>
+
+      <button class="project-card" data-title="graphic design 05" data-image="img/gd5.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 05</span>
+      </button>
+
+      <button class="project-card" data-title="graphic design 06" data-image="img/gd6.jpg" data-description="write one paragraph explaining this graphic design project.">
+        <span>graphic design 06</span>
+      </button>
+
+      <button class="project-card" data-title="photography 01" data-image="img/photo1.jpg" data-description="write one paragraph explaining this photography project.">
+        <span>photography 01</span>
+      </button>
+
+      <button class="project-card" data-title="photography 02" data-image="img/photo2.jpg" data-description="write one paragraph explaining this photography project.">
+        <span>photography 02</span>
+      </button>
+
+      <button class="project-card" data-title="traditional art 01" data-image="img/art1.jpg" data-description="write one paragraph explaining this drawing or painting project.">
+        <span>traditional art 01</span>
+      </button>
+
+      <button class="project-card" data-title="traditional art 02" data-image="img/art2.jpg" data-description="write one paragraph explaining this drawing or painting project.">
+        <span>traditional art 02</span>
+      </button>
+
+      <button class="project-card" data-title="traditional art 03" data-image="img/art3.jpg" data-description="write one paragraph explaining this drawing or painting project.">
+        <span>traditional art 03</span>
+      </button>
+
+      <button class="project-card" data-title="3d art 01" data-image="img/3d1.jpg" data-description="write one paragraph explaining this sculpture or 3d project.">
+        <span>3d art 01</span>
+      </button>
+
+      <button class="project-card" data-title="3d art 02" data-image="img/3d2.jpg" data-description="write one paragraph explaining this sculpture or 3d project.">
+        <span>3d art 02</span>
+      </button>
+
+      <button class="project-card" data-title="3d art 03" data-image="img/3d3.jpg" data-description="write one paragraph explaining this sculpture or 3d project.">
+        <span>3d art 03</span>
+      </button>
+
     </section>
   </main>
 
-  <!-- modal for staged project reveal -->
-  <div class="modal" id="project-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal" id="project-modal">
+    <div class="modal-bg"></div>
 
-    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" type="button" data-close-modal aria-label="close project window">close</button>
+    <div class="modal-box">
+      <button class="modal-close">close</button>
 
-      <h2 id="modal-title" class="modal-title reveal-step"></h2>
+      <h2 id="modal-title" class="reveal-step"></h2>
 
-      <div class="modal-image-wrap reveal-step">
-        <img id="modal-image" src="" alt="" />
+      <div class="modal-img-wrap reveal-step">
+        <img id="modal-image" src="" alt="">
       </div>
 
-      <p id="modal-description" class="modal-description reveal-step"></p>
-    </section>
+      <p id="modal-description" class="reveal-step"></p>
+    </div>
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

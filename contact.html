@@ -13,42 +13,44 @@
   <meta name="theme-color" content="#f4f1ec">
 </head>
 
-  <nav class="edge-nav" aria-label="main navigation">
+<body>
+  <header class="site-logo">
+    <a href="index.html">
+      <img src="img/logo.png" alt="personal logo">
+    </a>
+  </header>
+
+  <nav class="edge-nav">
     <a class="nav-home" href="index.html">home</a>
     <a class="nav-projects" href="projects.html">projects</a>
     <a class="nav-about" href="about.html">about</a>
     <a class="nav-contact active" href="contact.html">contact</a>
   </nav>
 
-  <main class="content-layout page-fade">
+  <main class="content-layout">
     <section class="contact-layout">
       <div>
         <p class="eyebrow">contact</p>
-        <h1>let’s connect.</h1>
-        <p>
-          <!-- replace with your real email or contact line -->
-          use this space for a simple contact note, availability line, or professional email.
-        </p>
+        <h1>let's connect.</h1>
+        <p>write a short contact note here. you can include your email, availability, or collaboration interests.</p>
       </div>
 
-      <!-- this form is front-end only unless you connect it to a form service later -->
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form">
         <label for="name">name</label>
-        <input id="name" name="name" type="text" placeholder="your name" required />
+        <input id="name" type="text" placeholder="your name">
 
         <label for="email">email</label>
-        <input id="email" name="email" type="email" placeholder="your email" required />
+        <input id="email" type="email" placeholder="your email">
 
         <label for="message">message</label>
-        <textarea id="message" name="message" rows="6" placeholder="write your message" required></textarea>
+        <textarea id="message" rows="6" placeholder="your message"></textarea>
 
         <button type="submit">send message</button>
-
-        <p class="form-note" id="form-note" aria-live="polite"></p>
+        <p id="form-message"></p>
       </form>
     </section>
   </main>
 
-  <script src="js/script.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
