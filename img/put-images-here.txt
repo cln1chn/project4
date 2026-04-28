@@ -1,1 +1,0 @@
-add logo.png, about-photo.jpg, project-01.jpg, project-02.jpg, etc. here.

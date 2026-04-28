@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Smokum&display=swap');
 
 :root {
   --bg: #f4f1ec;
@@ -26,7 +26,9 @@ body {
   text-transform: lowercase;
 }
 
-body.home-page {
+body.home-page,
+body.projects-page,
+body.about-page {
   height: 100vh;
   overflow: hidden;
 }
@@ -41,18 +43,17 @@ a {
   text-decoration: none;
 }
 
-/* fixed logo */
-
+/* logo stays centered at top */
 .site-logo {
-  position: fixed;
-  top: 0.7rem;
+  position: absolute;
+  top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
 
 .site-logo img {
-  width: 90px;
+  width: 3rem;
   height: auto;
 }
 
@@ -60,15 +61,14 @@ a {
   display: block;
 }
 
-/* edge navigation */
-
+/* edge nav creates four-direction navigation elements */
 .edge-nav a {
   position: fixed;
   z-index: 90;
   color: var(--accent);
   font-size: 1.05rem;
   letter-spacing: 0.12em;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .edge-nav a:hover,
@@ -77,43 +77,61 @@ a {
 }
 
 .nav-home {
-  top: 3.15rem;
+  top: 6rem;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .nav-projects {
-  left: 0.35rem;
+  left: 0.4rem;
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
 }
 
 .nav-about {
-  right: 0.35rem;
+  right: 0.4rem;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
 }
 
 .nav-contact {
-  bottom: 0.45rem;
+  position: fixed;
   left: 50%;
+  bottom: 1.5rem;
   transform: translateX(-50%);
 }
 
-/* typography */
+/* LinkedIn icon positioned separately so it can move to bottom of page on mobile screens */
+.linkedin-link {
+  position: fixed;
+  left: calc(50% + 3rem);
+  bottom: 1.5rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkedin-link img {
+  width: 1.2rem;
+  height: 1.2rem;
+  max-width: 1.2rem;
+  max-height: 1.2rem;
+  object-fit: contain;
+}
 
 h1,
 h2 {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Smokum", cursive;
   color: var(--accent);
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  line-height: 1;
   margin: 0;
 }
 
 h1 {
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
 }
 
 h2 {
@@ -121,54 +139,71 @@ h2 {
 }
 
 p {
-  line-height: 1.55;
-  margin-top: 1rem;
+  line-height: 1.5;
+  margin-top: .8rem;
 }
 
 .eyebrow {
   color: var(--accent);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-/* home */
+/* home pg */
 
 .home-layout {
   height: 100vh;
-  padding: 7rem 4rem 4rem;
-  display: grid;
-  place-items: center;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   text-align: center;
 }
 
 .home-text {
-  max-width: 800px;
+  max-width: 900px;
+  margin-top: 32vh;
+}
+
+.home-text h1 {
+  text-transform: uppercase;
+  font-size: clamp(4rem, 10vw, 9rem);
+  margin-bottom: 1.2rem;
 }
 
 .home-text p:last-child {
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 560px;
+  margin-inline: auto;
+  font-style: italic;
 }
-
-/* general pages */
 
 .content-layout {
   min-height: 100vh;
-  padding: 8rem clamp(2rem, 7vw, 7rem) 6rem;
+  padding: 12.5rem clamp(2rem, 7vw, 7rem) 6rem;
 }
 
-.page-intro {
-  max-width: 720px;
-  margin-bottom: 3rem;
+/* projects pg */
+.projects-page .content-layout {
+  height: 100vh;
+  min-height: 0;
+  padding: 6.5rem 7.5rem 5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.page-intro p:last-child {
-  max-width: 540px;
+.projects-page .page-intro {
+  margin-bottom: 0.75rem;
 }
 
-/* projects */
+.projects-page .page-intro h1 {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+}
+
+.projects-page .page-intro p {
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+}
 
 .project-grid {
   display: grid;
@@ -177,35 +212,80 @@ p {
   border-top: 1px solid var(--line);
 }
 
+.projects-page .project-grid {
+  flex: 1;
+  min-height: 0;
+  grid-template-rows: repeat(3, 1fr);
+  margin-bottom: 1.5rem;
+}
+
+/* project cards use image layers so thumbnail can fade into orange */
 .project-card {
-  min-height: 215px;
-  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
   border: none;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  padding: 1rem;
   background: transparent;
-  color: var(--accent);
+  color: var(--bg);
   font-family: "courier new", courier, monospace;
   text-align: left;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition: transform 0.8s ease;
+}
+
+.project-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.4);
+  filter: brightness(45%);
+  transition: opacity 0.6s ease, transform 0.3s ease;
+}
+
+/* creates same dimness across all thumbnails */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
 .project-card span {
-  display: block;
-  font-family: "Fredoka", sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2.35rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  color: var(--bg);
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  transition: opacity 0.25s ease;
 }
 
 .project-card:hover {
-  background: var(--surface);
-  transform: translateY(-3px);
+  background: var(--accent);
+  transform: translateY(-2px);
 }
 
-/* modal */
+.project-card:hover .project-thumb {
+  opacity: 0;
+  transform: scale(1.25);
+}
 
+.project-card:hover::before {
+  opacity: 0;
+}
+
+.project-card:hover span {
+  opacity: 1;
+}
+
+/* project cards */
 .modal {
   display: none;
   position: fixed;
@@ -261,10 +341,18 @@ p {
   object-fit: contain;
 }
 
+#modal-title {
+  text-align: center;
+  letter-spacing: .06em;
+  font-size: 4rem;
+  margin-top: -1rem;
+}
+
 #modal-description {
   max-width: 720px;
 }
 
+/* reveal when card content appears */
 .reveal-step {
   opacity: 0;
   transform: translateY(10px);
@@ -276,33 +364,40 @@ p {
   transform: translateY(0);
 }
 
-/* about */
-
+/* about pg */
 .about-layout {
   max-width: 1050px;
   margin: auto;
   display: grid;
-  grid-template-columns: minmax(260px, 430px) 1fr;
+  grid-template-columns: minmax(240px, 360px) 1fr;
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
 }
 
 .about-img {
   background: var(--surface);
+  transform: translateY(-1.5rem);
+  border: 1.5px solid var(--accent);
 }
 
 .about-img img {
   width: 100%;
+  max-width: 320px;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .about-copy p:last-child {
   max-width: 560px;
 }
 
-/* contact */
+.about-copy .eyebrow {
+  margin-bottom: 0.3rem;
+}
 
+/* contact pg */
 .contact-layout {
   max-width: 1000px;
   margin: auto;
@@ -331,7 +426,13 @@ p {
   background: var(--surface);
   color: var(--text);
   font-family: "courier new", courier, monospace;
-  text-transform: lowercase;
+  text-transform: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 .contact-form button {
@@ -343,35 +444,234 @@ p {
   font-family: "courier new", courier, monospace;
   text-transform: lowercase;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.contact-form button:hover {
+  opacity: 0.75;
 }
 
 #form-message {
+  min-height: 1.5rem;
   color: var(--accent);
+  font-style: italic;
+  margin-top: 1rem;
 }
 
-/* tablet */
+/* contact form */
+.custom-popup {
+  position: fixed;
+  left: 50%;
+  bottom: 5rem;
+  transform: translateX(-50%) translateY(1rem);
+  z-index: 500;
+  max-width: min(90vw, 32rem);
+  padding: 0.9rem 1.2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: "courier new", courier, monospace;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
 
-@media (max-width: 950px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
+.custom-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* tighter desktop/tablet layout so pages fit without scrolling */
+@media (max-width: 1200px) and (min-width: 651px) {
+  body.home-page,
+  body.projects-page,
+  body.about-page,
+  body.contact-page {
+    height: 100vh;
+    overflow: hidden;
   }
 
-  .about-layout,
-  .contact-layout {
-    grid-template-columns: 1fr;
+  .edge-nav a {
+    font-size: 0.85rem;
+  }
+
+  .site-logo img {
+    width: 2.4rem;
+  }
+
+  .nav-home {
+    top: 5rem;
+  }
+
+  .nav-contact {
+    bottom: 1rem;
+  }
+
+  .linkedin-link {
+    left: calc(50% + 2.5rem);
+    bottom: 1rem;
+  }
+
+  .linkedin-link img {
+    width: 1rem;
+    height: 1rem;
+    max-width: 1rem;
+    max-height: 1rem;
+  }
+
+  .content-layout {
+    height: 100vh;
+    min-height: 0;
+    padding: 9rem 6rem 4.5rem;
+  }
+
+  .home-text {
+    max-width: 720px;
+    margin-top: 34vh;
+  }
+
+  .home-text h1 {
+    font-size: clamp(3.2rem, 7vw, 6rem);
+  }
+
+  .projects-page .content-layout {
+    height: 100vh;
+    min-height: 0;
+    padding: 5.75rem 6.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projects-page .page-intro h1 {
+    font-size: clamp(2rem, 3.3vw, 3rem);
+  }
+
+  .projects-page .page-intro p {
+    font-size: 0.75rem;
+  }
+
+  .projects-page .project-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    flex: 1;
+    min-height: 0;
+  }
+
+  .project-card {
+    padding: 0.75rem;
+  }
+
+  .project-card span {
+    font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  }
+
+  .about-layout {
+    max-width: 780px;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
   }
 
   .about-img {
-    max-width: 430px;
+    transform: translateY(-0.5rem);
+  }
+
+  .about-img img {
+    max-width: 250px;
+  }
+
+  .about-copy h1,
+  .contact-layout h1 {
+    font-size: clamp(2.3rem, 4.5vw, 3.5rem);
+  }
+
+  .about-copy p,
+  .contact-layout p {
+    font-size: 0.82rem;
+  }
+
+  .contact-layout {
+    max-width: 780px;
+    grid-template-columns: 1fr 360px;
+    gap: 2.5rem;
+  }
+
+  .contact-form {
+    gap: 0.55rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.65rem;
+  }
+
+  .contact-form textarea {
+    max-height: 7rem;
   }
 }
 
-/* phone */
+/* smaller tablet sizes but still using desktop-style layout */
+@media (max-width: 950px) and (min-width: 651px) {
+  body.home-page,
+  body.projects-page,
+  body.about-page,
+  body.contact-page {
+    height: 100vh;
+    overflow: hidden;
+  }
 
+  .content-layout {
+    height: 100vh;
+    min-height: 0;
+    padding: 8.5rem 5rem 4.5rem;
+  }
+
+  .projects-page .content-layout {
+    height: 100vh;
+    padding: 5.5rem 5rem 4.5rem;
+  }
+
+  .projects-page .project-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .about-layout {
+    max-width: 720px;
+    grid-template-columns: 230px 1fr;
+    gap: 2rem;
+  }
+
+  .about-img img {
+    max-width: 220px;
+  }
+
+  .contact-layout {
+    max-width: 720px;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+  }
+}
+
+/* phone layout switches to normal scrolling, no four-direction nav */
 @media (max-width: 650px) {
-  body.home-page {
-    overflow: auto;
+  body.home-page,
+  body.projects-page,
+  body.about-page,
+  body.contact-page {
     height: auto;
+    overflow: auto;
+  }
+
+  .about-img {
+    transform: none;
+    max-width: 100%;
+    width: 230px;
+    margin: 0 auto;
+  }
+
+  .about-img img {
+    margin: 0 auto;
   }
 
   .site-logo {
@@ -392,7 +692,7 @@ p {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     background: rgba(244, 241, 236, 0.92);
     backdrop-filter: blur(8px);
   }
@@ -407,25 +707,64 @@ p {
     font-size: 0.78rem;
   }
 
+  .linkedin-link {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem;
+    margin-bottom: 4rem;
+  }
+
+  .linkedin-link img {
+    width: 2rem;
+    height: 2rem;
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+
   .home-layout {
     height: auto;
     min-height: 75vh;
     padding: 4rem 1.25rem;
+    display: grid;
+    place-items: center;
+  }
+
+  .home-text {
+    margin-top: -10rem;
+  }
+
+  .home-text h1 {
+    font-size: clamp(3.2rem, 16vw, 5rem);
   }
 
   .content-layout {
-    padding: 4rem 1.25rem;
+    padding: 1.5rem 2.5rem 3rem;
   }
 
-  h1 {
-    font-size: clamp(3rem, 16vw, 4.8rem);
+  .projects-page .content-layout {
+    height: auto;
+    padding: 4rem 2rem;
   }
 
-  .project-grid {
+  .project-grid,
+  .projects-page .project-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .project-card,
+  .projects-page .project-card {
+    min-height: 150px;
+  }
+
+  .about-layout,
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 
-  .project-card {
-    min-height: 150px;
+  .about-img {
+    transform: none;
+    max-width: 320px;
   }
 }
